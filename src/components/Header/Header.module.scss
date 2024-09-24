@@ -52,14 +52,10 @@
 	font-weight: 700;
 	font-style: normal;
 	background: none;
-	transition: all 0.5s ease;
-	position: relative;
-	top: 0;
-	left: 0;
+	transition: all 0.5s ease-in-out;
 	&:hover {
 		text-shadow: 0 0 10px rgb(173, 231, 171);
 		font-size: 18px;
-		top: -2px;
 	}
 }
 
