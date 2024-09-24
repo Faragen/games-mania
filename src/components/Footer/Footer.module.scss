@@ -1,0 +1,56 @@
+.footer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 40px;
+	position: relative;
+	width: 100%;
+}
+.company {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	top: 50%;
+	left: 7%;
+	transform: translateY(-50%);
+	span,
+	a {
+		color: #b5b4ba;
+		font-family: "Roboto";
+		font-weight: 400;
+		font-style: normal;
+		font-size: 18px;
+	}
+	a {
+		color: rgb(67 97 238);
+	}
+}
+.logo {
+	a {
+		font-family: "Spicy Rice";
+		font-weight: 400;
+		font-style: normal;
+		font-size: 40px;
+		color: white;
+	}
+}
+.information {
+	display: flex;
+	justify-content: space-between;
+	gap: 40px;
+	position: absolute;
+	top: 50%;
+	right: 7%;
+	transform: translateY(-50%);
+	a {
+		color: #b5b4ba;
+		font-family: "Open Sans";
+		font-style: normal;
+		font-weight: 400;
+		font-size: 18px;
+		transition: all 0.6s ease;
+		&:hover {
+			color: #4361ee;
+		}
+	}
+}
