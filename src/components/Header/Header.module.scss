@@ -36,25 +36,46 @@
 	}
 }
 
-.playBtn {
+.auth {
 	position: absolute;
 	top: 50%;
 	right: 5%;
 	transform: translateY(-50%);
-	button {
-		background-color: #4361ee;
-		border: 3px solid #4361ee;
-		color: white;
-		font-family: "Roboto";
-		font-size: 16px;
-		font-weight: 700;
-		font-style: normal;
-		width: 190px;
-		height: 50px;
-		border-radius: 30px;
-		transition: all 0.7s ease;
-		&:hover {
-			background-color: #4362ee00;
-		}
+	display: flex;
+	gap: 15px;
+}
+
+.sign-up {
+	color: rgb(209, 197, 197);
+	font-family: "Roboto";
+	font-size: 16px;
+	font-weight: 700;
+	font-style: normal;
+	background: none;
+	transition: all 0.5s ease;
+	position: relative;
+	top: 0;
+	left: 0;
+	&:hover {
+		text-shadow: 0 0 10px rgb(173, 231, 171);
+		font-size: 18px;
+		top: -2px;
+	}
+}
+
+.sign-in {
+	background-color: #4361ee;
+	border: 3px solid #4361ee;
+	color: white;
+	font-family: "Roboto";
+	font-size: 16px;
+	font-weight: 700;
+	font-style: normal;
+	width: 150px;
+	height: 50px;
+	border-radius: 30px;
+	transition: all 0.7s ease;
+	&:hover {
+		background-color: #4362ee00;
 	}
 }
