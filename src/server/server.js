@@ -21,7 +21,7 @@ serv.use((req, res, next) => {
 serv.use(express.json());
 
 //forms-requests (Content-Type: application/x-www-form-urlencoded)
-serv.use(express.urlencoded());
+serv.use(express.urlencoded({ extended: true }));
 
 //=========================================================
 //Get mathcing pairs
