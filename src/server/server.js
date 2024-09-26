@@ -24,21 +24,21 @@ serv.use(express.json());
 serv.use(express.urlencoded({ extended: true }));
 
 //=========================================================
-//Get mathcing pairs
+//Get match the set
 //=========================================================
-const matchingPairsPath = path.join(__dirname, "src/assets/matching-pairs");
+const matchTheSetPath = path.join(__dirname, "src/assets/match-the-set");
 
-serv.use("/images/matching-pairs", express.static(matchingPairsPath));
+serv.use("/images/match-the-set", express.static(matchTheSetPath));
 
-serv.get("/api/matching-pairs/", async (req, res) => {
+serv.get("/api/match-the-set/", async (req, res) => {
 	try {
-		const files = await fs.promises.readdir(matchingPairsPath);
+		const files = await fs.promises.readdir(matchTheSetPath);
 		const images = files.map((file) => {
 			const extname = path.extname(file);
 			return {
 				id: uuidv4(),
 				title: path.basename(file, extname).split("-").join(" "),
-				imageURL: `${servURL}images/matching-pairs/${file}`,
+				imageURL: `${servURL}images/match-the-set/${file}`,
 			};
 		});
 

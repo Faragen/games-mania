@@ -1,19 +1,19 @@
-import { Pair } from "../store";
+import { Card } from "../store";
 
-export async function getMatchingPairs(url: string): Promise<Pair[]> {
-	const apiMachingPairs = "/api/matching-pairs/";
+export async function getMatchTheSet(url: string): Promise<Card[]> {
+	const apiGetMachTheSet = "/api/match-the-set/";
 	try {
-		const response = await fetch(url + apiMachingPairs);
+		const response = await fetch(url + apiGetMachTheSet);
 		if (!response.ok) {
 			throw new Error("Request is failed");
 		}
-		const data: Pair[] = await response.json();
+		const data: Card[] = await response.json();
 		return data;
 	} catch (error) {
 		const message =
 			error instanceof Error
 				? error.message
-				: "Got an error by trying to fetch Matching Pairs";
+				: "Got an error by trying to fetch Match the Set";
 		console.log(message);
 		return [];
 	}

@@ -1,15 +1,15 @@
-import { getMatchingPairs } from "./fetchRequests/getGames";
+import { getMatchTheSet } from "./fetchRequests/getGames";
 
 export const url = "http://localhost:3000";
 
 //Matching pairs
-export type Pair = {
+export type Card = {
 	id: string;
 	title: string;
 	imageURL: string;
 };
 
-export const pairs = await getMatchingPairs(url);
+export const cards = await getMatchTheSet(url);
 
 // if (!productsList[0]) {
 // 	const initialProducts = await getProducts(url, 20, 0);
