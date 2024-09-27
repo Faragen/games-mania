@@ -6,7 +6,8 @@ import { v4 as uuidv4 } from "uuid";
 //helpers
 const __dirname = path.resolve();
 const serv = express();
-const servURL = "http://localhost:3000/";
+const PORT = 3000;
+const servURL = `http://localhost:${PORT}/`;
 
 //CORS allow
 serv.use((req, res, next) => {
@@ -43,7 +44,11 @@ serv.get("/api/match-the-set/", async (req, res) => {
 		});
 
 		res.status(200).json(images);
-	} catch (error) {}
+	} catch (error) {
+		const message =
+			error instanceof Error ? error.message : "Reading files is failed :(";
+		console.log(message);
+	}
 });
 //=========================================================
 //Get products
@@ -72,4 +77,4 @@ serv.use(function (req, res) {
 	res.status(404).send("Wrong Request");
 });
 
-serv.listen(3000, () => console.log(`Server has been started on ${servURL}`));
+serv.listen(PORT, () => console.log(`Server has been started on ${servURL}`));

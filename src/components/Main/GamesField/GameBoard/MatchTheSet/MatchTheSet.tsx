@@ -2,18 +2,19 @@ import styles from "./MatchTheSet.module.scss";
 import { cards } from "../../../../../store/store";
 import { Card } from "../../../../../store/store";
 
-function sortedSets(
+function sortTheSets(
 	cards: Card[],
 	setSize: number = 2,
 	fieldSize: number = 20
 ): Card[] {
 	if (fieldSize % setSize !== 0) {
-		throw new Error("");
+		throw new Error(
+			"The Field Size must be divisible by the Set Size without remainder"
+		);
 	}
 	const arrOfIndexes = [];
 
-	//solving problem
-	const arrContainer = Array.from({ length: cards.length }, (e, i) => i++);
+	const arrContainer = Array.from({ length: cards.length }, (_, i) => i++);
 	const uniqueNumbers1 = [];
 
 	for (let i = 1; i <= fieldSize / setSize; i++) {
@@ -32,18 +33,20 @@ function sortedSets(
 		);
 	}
 
-	return arrOfIndexes.map((elem) => ({ ...cards[elem] }));
+	return arrOfIndexes.map((elem) => {
+		cards[elem].id += elem;
+		return { ...cards[elem] };
+	});
 }
 
-const gameSets = sortedSets(cards, 3, 30);
-console.log(gameSets);
+const gameSets = sortTheSets(cards, 3, 30);
 
 export function MatchTheSet() {
 	return (
 		<div className={styles["game-board"]}>
-			{cards.map((card) => {
+			{gameSets.map((card) => {
 				return (
-					<div key={card.id}>
+					<div key={card.id} className={styles["game-card"]}>
 						<img src={card.imageURL} alt={card.title} />
 					</div>
 				);

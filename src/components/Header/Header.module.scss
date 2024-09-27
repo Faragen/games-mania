@@ -21,9 +21,11 @@
 	}
 }
 .menu {
-	display: flex;
-	justify-content: center;
-	gap: 30px;
+	ul {
+		display: flex;
+		justify-content: center;
+		gap: 30px;
+	}
 	a {
 		font-family: "Open Sans";
 		font-weight: 600;

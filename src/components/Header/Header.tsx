@@ -7,10 +7,20 @@ export function Header() {
 				<a href='#'>LoGo</a>
 			</div>
 			<nav className={styles.menu}>
-				<a href='#'>Matching Pairs</a>
-				<a href='#'>Game2</a>
-				<a href='#'>Game3</a>
-				<a href='#'>Game4</a>
+				<ul>
+					<li>
+						<a href='#'>Matching Pairs</a>
+					</li>
+					<li>
+						<a href='#'>Game2</a>
+					</li>
+					<li>
+						<a href='#'>Game3</a>
+					</li>
+					<li>
+						<a href='#'>Game4</a>
+					</li>
+				</ul>
 			</nav>
 			<div className={styles.auth}>
 				<button className={styles["sign-up"]}>Sign up</button>
