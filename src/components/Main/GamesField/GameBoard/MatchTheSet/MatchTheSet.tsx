@@ -15,6 +15,7 @@ function sortTheSets(
 	const arrOfIndexes = [];
 
 	const arrContainer = Array.from({ length: cards.length }, (_, i) => i++);
+	//It will need to make by object
 	const uniqueNumbers1 = [];
 
 	for (let i = 1; i <= fieldSize / setSize; i++) {
@@ -43,12 +44,14 @@ const gameSets = sortTheSets(cards, 3, 30);
 
 export function MatchTheSet() {
 	return (
-		<div className={styles["game-board"]}>
+		<div className={styles["match-the-set"]}>
 			{gameSets.map((card) => {
 				return (
-					<div key={card.id} className={styles["game-card"]}>
-						<img src={card.imageURL} alt={card.title} />
-					</div>
+					<div
+						key={card.id}
+						className={styles["game-card"]}
+						style={{ backgroundImage: `url(${card.imageURL})` }}
+					></div>
 				);
 			})}
 		</div>
