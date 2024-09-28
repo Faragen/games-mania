@@ -7,44 +7,67 @@ function sortTheSets(
 	setSize: number = 2,
 	fieldSize: number = 20
 ): Card[] {
-	if (fieldSize % setSize !== 0) {
-		throw new Error(
-			"The Field Size must be divisible by the Set Size without remainder"
-		);
+	try {
+		if (fieldSize % setSize !== 0) {
+			throw new Error(
+				"The Field Size must be divisible by the Set Size without remainder"
+			);
+		}
+		const arrOfIndexes = [];
+
+		const arrContainer = Array.from({ length: cards.length }, (_, i) => i++);
+		const setCollection: Record<string, number[]> = {};
+
+		for (let i = 1; i <= setSize; i++) {
+			setCollection["set" + i] = [];
+		}
+
+		for (let i = 1; i <= fieldSize / setSize; i++) {
+			setCollection.set1.push(
+				arrContainer.splice(Math.random() * arrContainer.length, 1)[0]
+			);
+		}
+
+		for (const key in setCollection) {
+			if (key !== "set1") {
+				setCollection[key] = [...setCollection.set1];
+			}
+		}
+
+		for (let i = 1; i <= fieldSize / setSize; i++) {
+			for (const key in setCollection) {
+				arrOfIndexes.push(
+					setCollection[key].splice(
+						Math.random() * setCollection[key].length,
+						1
+					)[0]
+				);
+			}
+		}
+
+		return arrOfIndexes.map((elem) => {
+			cards[elem].id += elem;
+			return { ...cards[elem] };
+		});
+	} catch (error) {
+		const message =
+			error instanceof Error
+				? error.message
+				: "Wrong size of set or size of field";
+		console.log(message);
+		return [];
 	}
-	const arrOfIndexes = [];
-
-	const arrContainer = Array.from({ length: cards.length }, (_, i) => i++);
-	//It will need to make by object
-	const uniqueNumbers1 = [];
-
-	for (let i = 1; i <= fieldSize / setSize; i++) {
-		uniqueNumbers1.push(
-			arrContainer.splice(Math.random() * arrContainer.length, 1)[0]
-		);
-	}
-	const uniqueNumbers2 = [...uniqueNumbers1];
-
-	for (let i = 1; i <= fieldSize / setSize; i++) {
-		arrOfIndexes.push(
-			uniqueNumbers1.splice(Math.random() * uniqueNumbers1.length, 1)[0]
-		);
-		arrOfIndexes.push(
-			uniqueNumbers2.splice(Math.random() * uniqueNumbers2.length, 1)[0]
-		);
-	}
-
-	return arrOfIndexes.map((elem) => {
-		cards[elem].id += elem;
-		return { ...cards[elem] };
-	});
 }
 
 const gameSets = sortTheSets(cards, 3, 30);
 
+const gridScema = {
+	gridTemplate: `repeat(${5}, 1fr) / repeat(${6}, minmax(130px, 300px))`,
+};
+
 export function MatchTheSet() {
 	return (
-		<div className={styles["match-the-set"]}>
+		<div className={styles["match-the-set"]} style={gridScema}>
 			{gameSets.map((card) => {
 				return (
 					<div

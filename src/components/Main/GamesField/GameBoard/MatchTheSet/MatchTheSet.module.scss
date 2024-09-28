@@ -1,6 +1,5 @@
 .match-the-set {
 	display: grid;
-	grid-template: repeat(4, 1fr) / repeat(5, minmax(130px, 300px));
 	gap: 0.5vw;
 	justify-items: center;
 	align-items: center;
