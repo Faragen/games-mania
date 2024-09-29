@@ -59,10 +59,10 @@ function sortTheSets(
 	}
 }
 
-const gameSets = sortTheSets(cards, 3, 30);
+const gameSets = sortTheSets(cards, 2, 42);
 
 const gridScema = {
-	gridTemplate: `repeat(${5}, 1fr) / repeat(${6}, minmax(130px, 300px))`,
+	gridTemplate: `repeat(${6}, 1fr) / repeat(${7},  minmax(130px, 300px))`,
 };
 
 export function MatchTheSet() {
@@ -70,11 +70,11 @@ export function MatchTheSet() {
 		<div className={styles["match-the-set"]} style={gridScema}>
 			{gameSets.map((card) => {
 				return (
-					<div
+					<button
 						key={card.id}
 						className={styles["game-card"]}
 						style={{ backgroundImage: `url(${card.imageURL})` }}
-					></div>
+					></button>
 				);
 			})}
 		</div>

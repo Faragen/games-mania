@@ -1,6 +1,6 @@
 .game-board {
 	display: flex;
-	min-width: 50%;
+	flex-direction: column;
 	padding: 15px;
 	height: 100%;
 	justify-content: center;
