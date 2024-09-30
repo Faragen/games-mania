@@ -56,8 +56,8 @@
 	background: none;
 	transition: all 0.5s ease-in-out;
 	&:hover {
-		text-shadow: 0 0 10px rgb(173, 231, 171);
-		font-size: 18px;
+		text-shadow: 0 0 10px rgb(133, 173, 132);
+		transform: scale(1.2, 1.2);
 	}
 }
 

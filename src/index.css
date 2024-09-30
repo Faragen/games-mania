@@ -14,6 +14,7 @@
 	text-rendering: optimizeLegibility;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background-color: #0a111f;
 }
 
 * {
@@ -25,6 +26,7 @@
 *:before,
 *:after {
 	box-sizing: border-box;
+	background-color: transparent;
 }
 
 :focus,
@@ -144,5 +146,4 @@ html {
 	padding: 15px;
 	display: flex;
 	flex-direction: column;
-	background-color: #0a111f;
 }

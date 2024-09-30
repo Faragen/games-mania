@@ -1,6 +1,7 @@
 import styles from "./MatchTheSet.module.scss";
 import { cards } from "../../../../../store/store";
 import { Card } from "../../../../../store/store";
+import { GameCard } from "./GameCard/GameCard";
 
 function sortTheSets(
 	cards: Card[],
@@ -69,13 +70,7 @@ export function MatchTheSet() {
 	return (
 		<div className={styles["match-the-set"]} style={gridScema}>
 			{gameSets.map((card) => {
-				return (
-					<button
-						key={card.id}
-						className={styles["game-card"]}
-						style={{ backgroundImage: `url(${card.imageURL})` }}
-					></button>
-				);
+				return <GameCard card={card} />;
 			})}
 		</div>
 	);

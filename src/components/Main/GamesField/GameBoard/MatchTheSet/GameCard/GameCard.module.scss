@@ -1,0 +1,57 @@
+.game-card {
+	--front: rotateY(0deg);
+	--back: rotateY(180deg);
+	padding-left: 76.9%;
+	position: relative;
+	border-radius: 10%;
+	width: 100%;
+	height: 100%;
+	transition: box-shadow 0.25s ease;
+	opacity: 0;
+	animation: appearance 2s ease-in 0.4s forwards;
+	perspective: 1000px;
+
+	.front,
+	.back {
+		backface-visibility: hidden;
+		border-radius: 10%;
+		transition: transform 0.8s ease;
+		border: 0.2vh solid #000000;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		&:hover {
+			box-shadow: 0 0 2vh 1vh #4361ee;
+		}
+	}
+	.front {
+		background: var(--cardImg) 50% / cover no-repeat, rgba(255, 0, 0, 0.648);
+		transform: var(--front);
+	}
+	.back {
+		background-color: #e81313c1;
+		transform: var(--back);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		font-size: clamp(14px, 0.9vw, 24px);
+		color: white;
+		row-gap: clamp(5px, 0.4vw, 10px);
+	}
+	&.flipped {
+		--front: rotateY(-180deg);
+		--back: rotateY(0deg);
+	}
+}
+
+@keyframes appearance {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
