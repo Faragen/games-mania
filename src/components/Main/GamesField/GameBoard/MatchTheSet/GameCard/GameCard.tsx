@@ -2,15 +2,15 @@ import styles from "./GameCard.module.scss";
 import React, { useState } from "react";
 import { Card } from "../../../../../../store/store";
 
-type props = {
+interface IProps {
 	card: Card;
-};
+}
 
-export function GameCard({ card }: props) {
+export function GameCard({ card }: IProps) {
 	const [flipped, setFlipped] = useState(false);
+
 	return (
 		<button
-			key={card.id}
 			className={[styles["game-card"], flipped ? styles.flipped : ""].join(" ")}
 			onClick={() => setFlipped((prev) => !prev)}
 		>

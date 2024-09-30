@@ -31,15 +31,22 @@
 		transform: var(--front);
 	}
 	.back {
-		background-color: #e81313c1;
+		background-color: #212d49;
 		transform: var(--back);
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		font-size: clamp(14px, 0.9vw, 24px);
-		color: white;
 		row-gap: clamp(5px, 0.4vw, 10px);
+		span {
+			background: linear-gradient(277deg, #4361ee 4.11%, #b20d5d 91.07%);
+			font-family: "Plus Jakarta Sans";
+			font-size: clamp(14px, 0.9vw, 24px);
+			font-weight: 700;
+			font-style: normal;
+			background-clip: text;
+			color: transparent;
+		}
 	}
 	&.flipped {
 		--front: rotateY(-180deg);

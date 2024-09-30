@@ -134,6 +134,17 @@ h6 {
 	font-style: normal;
 }
 
+@font-face {
+	font-family: "Plus Jakarta Sans";
+	font-display: swap;
+	src: url("./fonts/plusJakartaSans/PlusJakartaSans-SemiBold.ttf");
+	src: local("Plus Jakarta Sans"),
+		url("./fonts/plusJakartaSans/PlusJakartaSans-SemiBold.ttf")
+			format("truetype");
+	font-weight: 700;
+	font-style: normal;
+}
+
 body,
 html {
 	height: 100vh;

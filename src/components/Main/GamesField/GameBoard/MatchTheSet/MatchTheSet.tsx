@@ -70,7 +70,7 @@ export function MatchTheSet() {
 	return (
 		<div className={styles["match-the-set"]} style={gridScema}>
 			{gameSets.map((card) => {
-				return <GameCard card={card} />;
+				return <GameCard key={card.id} card={card} />;
 			})}
 		</div>
 	);
