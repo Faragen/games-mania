@@ -1,0 +1,115 @@
+.tools-match-the-set {
+	width: 100%;
+}
+.form-block {
+	display: flex;
+	flex-direction: column;
+	justify-content: start;
+	align-items: center;
+	width: 100%;
+}
+
+.select-title {
+	font-family: "Poppins";
+	font-weight: 400;
+	font-style: normal;
+	font-size: clamp(16px, 1vw, 26px);
+	color: #b5b4ba;
+	margin-bottom: 5px;
+}
+
+.select-wrapper {
+	position: relative;
+	width: 100%;
+	margin-bottom: 15px;
+	&::before {
+		content: "";
+		position: absolute;
+		top: 50%;
+		right: 3%;
+		transform: translateY(-50%);
+		width: 0;
+		height: 0;
+		border-left: clamp(3px, 0.5vw, 6px) solid transparent;
+		border-right: clamp(3px, 0.5vw, 6px) solid transparent;
+		border-top: clamp(6px, 1vw, 12px) solid #4361ee;
+		pointer-events: none;
+	}
+	&::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		left: 3%;
+		transform: translateY(-50%);
+		width: 0;
+		height: 0;
+		border-left: clamp(3px, 0.5vw, 6px) solid transparent;
+		border-right: clamp(3px, 0.5vw, 6px) solid transparent;
+		border-top: clamp(6px, 1vw, 12px) solid #4361ee;
+		pointer-events: none;
+	}
+}
+.select {
+	font-family: "Poppins";
+	font-weight: 400;
+	font-style: normal;
+	font-size: clamp(12px, 0.8vw, 20px);
+	color: #4361ee;
+	width: 100%;
+	padding: 5px;
+	border-radius: 10px;
+	border: 1px solid black;
+	text-align: center;
+	appearance: none;
+	background-color: #0a111f;
+	cursor: pointer;
+	outline: none;
+	&::-ms-expand {
+		display: none;
+	}
+	&:hover {
+		box-shadow: var(--box-shadow-main);
+	}
+}
+
+.new-field {
+	font-family: "Poppins";
+	font-weight: 400;
+	font-style: normal;
+	font-size: clamp(14px, 1vw, 24px);
+	color: #ebe9f1;
+	border-radius: 10px;
+	border: 1px solid black;
+	width: 100%;
+	padding: 10px;
+	background-color: #4361ee;
+	margin-bottom: 15px;
+	&:hover {
+		box-shadow: var(--box-shadow-main);
+	}
+}
+
+.start {
+	font-family: "Poppins";
+	font-weight: 400;
+	font-style: normal;
+	font-size: clamp(14px, 1vw, 24px);
+	color: #ebe9f1;
+	border-radius: 10px;
+	border: 1px solid black;
+	width: 100%;
+	padding: 10px;
+	background-color: #478f46;
+	margin-bottom: 15px;
+	&:hover {
+		box-shadow: 0 0 2vh 1vh #478f46;
+	}
+}
+.disabled {
+	color: #a0a0a0; /* Светло-серый текст */
+	opacity: 0.5; /* Эффект прозрачности */
+	cursor: not-allowed; /* Курсор, указывающий на недоступность */
+	&:hover {
+		box-shadow: none;
+	}
+}

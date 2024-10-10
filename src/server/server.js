@@ -4,8 +4,8 @@ import fs from "fs";
 import { v4 as uuidv4 } from "uuid";
 
 //helpers
-const __dirname = path.resolve();
 const serv = express();
+const __dirname = path.resolve();
 const PORT = 3000;
 const servURL = `http://localhost:${PORT}/`;
 
@@ -40,6 +40,8 @@ serv.get("/api/match-the-set/", async (req, res) => {
 				id: uuidv4(),
 				title: path.basename(file, extname).split("-").join(" "),
 				imageURL: `${servURL}images/match-the-set/${file}`,
+				isFlipped: false,
+				disabled: true,
 			};
 		});
 
@@ -50,28 +52,6 @@ serv.get("/api/match-the-set/", async (req, res) => {
 		console.log(message);
 	}
 });
-//=========================================================
-//Get products
-//=========================================================
-// serv.get("/api/products/", (req, res) => {
-// 	if (!req.query) {
-// 		//Get all the products
-// 		return res.status(200).json(DATA_PRODUCTS);
-// 	} else if (req.query.limit && req.query.lastProductsSize) {
-// 		//Get limited numbers of products
-// 		const responseDataProducts = [];
-// 		for (let i = req.query.lastProductsSize; i < req.query.limit; i++) {
-// 			responseDataProducts.push(DATA_PRODUCTS[i]);
-// 		}
-// 		res.status(200).json(responseDataProducts);
-// 	} else if (req.query) {
-// 		//Wrong request
-// 		res.status(404).send("Wrong Request");
-// 	}
-// });
-// serv.get("/api/products/:num/", (req, res) => {
-// 	res.status(200).json(DATA_PRODUCTS[req.params.num]);
-// });
 
 serv.use(function (req, res) {
 	res.status(404).send("Wrong Request");

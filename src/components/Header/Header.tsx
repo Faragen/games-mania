@@ -9,7 +9,7 @@ export function Header() {
 			<nav className={styles.menu}>
 				<ul>
 					<li>
-						<a href='#'>Matching Pairs</a>
+						<a href='#'>Match The Set</a>
 					</li>
 					<li>
 						<a href='#'>Game2</a>

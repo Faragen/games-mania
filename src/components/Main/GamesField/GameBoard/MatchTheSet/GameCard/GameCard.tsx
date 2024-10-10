@@ -1,18 +1,22 @@
 import styles from "./GameCard.module.scss";
-import React, { useState } from "react";
+import React, { memo } from "react";
 import { Card } from "../../../../../../store/store";
 
 interface IProps {
 	card: Card;
+	handleFlip: (id: string) => void;
 }
 
-export function GameCard({ card }: IProps) {
-	const [flipped, setFlipped] = useState(false);
+function GameCard({ card, handleFlip }: IProps) {
+	// console.log("render child");
 
 	return (
 		<button
-			className={[styles["game-card"], flipped ? styles.flipped : ""].join(" ")}
-			onClick={() => setFlipped((prev) => !prev)}
+			className={[
+				styles["game-card"],
+				card.isFlipped ? styles.flipped : "",
+			].join(" ")}
+			onClick={() => handleFlip(card.id)}
 		>
 			<div
 				className={styles.front}
@@ -26,3 +30,9 @@ export function GameCard({ card }: IProps) {
 		</button>
 	);
 }
+
+export default memo(
+	GameCard,
+	(prevProps, nextProps) =>
+		prevProps.card.isFlipped === nextProps.card.isFlipped
+);

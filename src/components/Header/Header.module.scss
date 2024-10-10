@@ -21,6 +21,10 @@
 	}
 }
 .menu {
+	& *:not(:first-child) {
+		text-decoration: line-through;
+		pointer-events: none;
+	}
 	ul {
 		display: flex;
 		justify-content: center;
@@ -30,7 +34,7 @@
 		font-family: "Open Sans";
 		font-weight: 600;
 		font-style: normal;
-		color: #b5b4ba;
+		color: #d2d0da;
 		transition: all 0.6s ease;
 		&:hover {
 			color: #4361ee;

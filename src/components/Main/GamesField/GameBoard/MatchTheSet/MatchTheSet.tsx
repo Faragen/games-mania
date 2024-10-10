@@ -1,12 +1,14 @@
 import styles from "./MatchTheSet.module.scss";
-import { cards } from "../../../../../store/store";
+import { cards, useAppSelector } from "../../../../../store/store";
 import { Card } from "../../../../../store/store";
-import { GameCard } from "./GameCard/GameCard";
+import GameCard from "./GameCard/GameCard";
+import { useEffect, useState } from "react";
+import { optionMTSSlice } from "../../../../../modules/MatchTheSet/options/options.slice";
 
 function sortTheSets(
 	cards: Card[],
-	setSize: number = 2,
-	fieldSize: number = 20
+	setSize: number,
+	fieldSize: number
 ): Card[] {
 	try {
 		if (fieldSize % setSize !== 0) {
@@ -60,17 +62,39 @@ function sortTheSets(
 	}
 }
 
-const gameSets = sortTheSets(cards, 2, 42);
-
-const gridScema = {
-	gridTemplate: `repeat(${6}, 1fr) / repeat(${7},  minmax(130px, 300px))`,
-};
-
 export function MatchTheSet() {
+	const playOption = useAppSelector((state) =>
+		optionMTSSlice.selectors.selectPlayOption(state)
+	);
+	const gameSets = sortTheSets(
+		cards,
+		playOption.setSize,
+		playOption.fieldSize.fieldSize
+	);
+
+	const [flippedState, setFlippedState] = useState(gameSets);
+	const gridScema = {
+		gridTemplate: `repeat(${playOption.fieldSize.rows}, 1fr) / repeat(${playOption.fieldSize.columns},  minmax(130px, 300px))`,
+	};
+	useEffect(() => {
+		setFlippedState(gameSets);
+	}, [playOption]);
+
+	function handleFlip(id: string): void {
+		setFlippedState((prevFlippedState) =>
+			prevFlippedState.map((set) => {
+				if (set.id === id) {
+					return { ...set, isFlipped: !set.isFlipped };
+				}
+				return set;
+			})
+		);
+	}
+
 	return (
 		<div className={styles["match-the-set"]} style={gridScema}>
-			{gameSets.map((card) => {
-				return <GameCard key={card.id} card={card} />;
+			{flippedState.map((card) => {
+				return <GameCard key={card.id} card={card} handleFlip={handleFlip} />;
 			})}
 		</div>
 	);
