@@ -27,7 +27,7 @@ serv.use(express.urlencoded({ extended: true }));
 //=========================================================
 //Get match the set
 //=========================================================
-const matchTheSetPath = path.join(__dirname, "src/assets/match-the-set");
+const matchTheSetPath = path.join(__dirname, "/assets/match-the-set");
 
 serv.use("/images/match-the-set", express.static(matchTheSetPath));
 

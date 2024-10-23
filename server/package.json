@@ -1,0 +1,21 @@
+{
+	"name": "server",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node server.js",
+		"serv": "nodemon server.js"
+	},
+	"author": "Faragen",
+	"license": "ISC",
+	"description": "",
+	"dependencies": {
+		"express": "^4.21.1",
+		"uuid": "^10.0.0"
+	},
+	"devDependencies": {
+		"nodemon": "^3.1.7"
+	}
+}
