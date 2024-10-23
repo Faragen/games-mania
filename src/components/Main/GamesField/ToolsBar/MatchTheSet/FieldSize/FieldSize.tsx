@@ -1,39 +1,50 @@
-import { SetStateAction } from "react";
+import { memo, SetStateAction, useRef } from "react";
 import { optionsMTS } from "../../../../../../modules/MatchTheSet/options/options.slice";
-import styles from "../ToolsMTS.module.scss";
+import s from "../ToolsMTS.module.scss";
 import { v4 as uuidv4 } from "uuid";
 
-interface FieldSizeProps {
-	setSize: string;
-	fieldSize: string;
-	setFieldSize: React.Dispatch<SetStateAction<string>>;
+interface IFieldSizeProps {
+	setSizeIndex: string;
+	fieldSizeIndex: string;
+	setFieldSizeIndex: React.Dispatch<SetStateAction<string>>;
 	optionsMTS: typeof optionsMTS;
+	setIsNewFieldAllowed: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export function FieldSize({
-	setSize,
+function FieldSize({
+	setSizeIndex,
 	optionsMTS,
-	fieldSize,
-	setFieldSize,
-}: FieldSizeProps) {
+	fieldSizeIndex,
+	setFieldSizeIndex,
+	setIsNewFieldAllowed,
+}: IFieldSizeProps) {
+	const isFirstEvent = useRef(true);
+
 	return (
 		<>
-			<label htmlFor='field-size' className={styles["select-title"]}>
+			<label htmlFor='field-size' className={s["select-title"]}>
 				Field Size
 			</label>
-			<div className={styles["select-wrapper"]}>
+			<div className={s["select-wrapper"]}>
 				<select
-					className={styles.select}
+					className={`${s.select} ${setSizeIndex === "" ? s.disabled : ""}`}
 					name='field-size'
-					disabled={setSize === ""}
-					value={fieldSize}
-					onChange={(e) => setFieldSize(e.target.value)}
+					id='field-size'
+					disabled={setSizeIndex === ""}
+					value={fieldSizeIndex}
+					onChange={(e) => {
+						setFieldSizeIndex(e.target.value);
+						if (isFirstEvent.current) {
+							isFirstEvent.current = false;
+							setIsNewFieldAllowed(true);
+						}
+					}}
 				>
 					{optionsMTS.reduce(
 						(acc, elem) => {
 							if (
 								elem.setSize.toString() ===
-								optionsMTS[Number(setSize)].setSize.toString()
+								optionsMTS[Number(setSizeIndex)].setSize.toString()
 							) {
 								elem.fieldSizes.forEach((elem, index) => {
 									acc.push(
@@ -47,7 +58,7 @@ export function FieldSize({
 						},
 						[
 							<option value='' key={uuidv4()} disabled hidden>
-								{setSize ? "choose field size" : "set size first!"}
+								{setSizeIndex ? "choose field size" : "set size first!"}
 							</option>,
 						]
 					)}
@@ -56,3 +67,5 @@ export function FieldSize({
 		</>
 	);
 }
+
+export default memo(FieldSize);

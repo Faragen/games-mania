@@ -1,9 +1,9 @@
 import { GamesField } from "./GamesField/GamesField";
-import styles from "./Main.module.scss";
+import s from "./Main.module.scss";
 
 export function Main() {
 	return (
-		<main className={styles.main}>
+		<main className={s.main}>
 			<GamesField />
 		</main>
 	);

@@ -22,6 +22,7 @@
 	position: relative;
 	width: 100%;
 	margin-bottom: 15px;
+
 	&::before {
 		content: "";
 		position: absolute;
@@ -49,11 +50,12 @@
 		pointer-events: none;
 	}
 }
+
 .select {
 	font-family: "Poppins";
 	font-weight: 400;
 	font-style: normal;
-	font-size: clamp(12px, 0.8vw, 20px);
+	font-size: clamp(16px, 0.8vw, 20px);
 	color: #4361ee;
 	width: 100%;
 	padding: 5px;
@@ -72,44 +74,59 @@
 	}
 }
 
-.new-field {
+.button {
 	font-family: "Poppins";
 	font-weight: 400;
 	font-style: normal;
-	font-size: clamp(14px, 1vw, 24px);
+	font-size: clamp(18px, 1vw, 24px);
 	color: #ebe9f1;
 	border-radius: 10px;
 	border: 1px solid black;
 	width: 100%;
 	padding: 10px;
-	background-color: #4361ee;
 	margin-bottom: 15px;
+}
+
+.new-field {
+	background-color: #4361ee;
+	margin-top: 30px;
 	&:hover {
 		box-shadow: var(--box-shadow-main);
 	}
 }
-
 .start {
-	font-family: "Poppins";
-	font-weight: 400;
-	font-style: normal;
-	font-size: clamp(14px, 1vw, 24px);
-	color: #ebe9f1;
-	border-radius: 10px;
-	border: 1px solid black;
-	width: 100%;
-	padding: 10px;
 	background-color: #478f46;
-	margin-bottom: 15px;
+	margin-bottom: 30px;
 	&:hover {
 		box-shadow: 0 0 2vh 1vh #478f46;
 	}
 }
+.stop {
+	background-color: #963455;
+	margin-bottom: 30px;
+	&:hover {
+		box-shadow: 0 0 2vh 1vh #963455;
+	}
+}
+
 .disabled {
-	color: #a0a0a0; /* Светло-серый текст */
-	opacity: 0.5; /* Эффект прозрачности */
-	cursor: not-allowed; /* Курсор, указывающий на недоступность */
+	opacity: 0.5;
+	cursor: not-allowed;
 	&:hover {
 		box-shadow: none;
 	}
+}
+
+.timer {
+	font-family: "Poppins";
+	font-weight: 400;
+	font-style: normal;
+	font-size: clamp(18px, 1vw, 24px);
+	color: #4361ee;
+	width: 100%;
+	padding: 5px;
+	border-radius: 10px;
+	border: 1px solid black;
+	text-align: center;
+	background-color: #0a111f;
 }

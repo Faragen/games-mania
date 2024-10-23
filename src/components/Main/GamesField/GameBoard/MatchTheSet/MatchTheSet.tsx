@@ -1,9 +1,21 @@
-import styles from "./MatchTheSet.module.scss";
-import { cards, useAppSelector } from "../../../../../store/store";
+import s from "./MatchTheSet.module.scss";
+import {
+	cards,
+	useAppDispatch,
+	useAppSelector,
+} from "../../../../../store/store";
 import { Card } from "../../../../../store/store";
 import GameCard from "./GameCard/GameCard";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { optionMTSSlice } from "../../../../../modules/MatchTheSet/options/options.slice";
+import { gameStatusSlice } from "../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
+import { createPortal } from "react-dom";
+import { ResultInfo } from "./ResultInfo/ResultInfo";
+
+export type CurrentSet = {
+	id: string;
+	title: string;
+};
 
 function sortTheSets(
 	cards: Card[],
@@ -62,10 +74,18 @@ function sortTheSets(
 	}
 }
 
+const resultModal = document.getElementById("result-modal");
+const root = document.getElementById("root")!;
+
 export function MatchTheSet() {
+	const dispatch = useAppDispatch();
 	const playOption = useAppSelector((state) =>
 		optionMTSSlice.selectors.selectPlayOption(state)
 	);
+	const gameStatus = useAppSelector((state) =>
+		gameStatusSlice.selectors.selectGameStatus(state)
+	);
+
 	const gameSets = sortTheSets(
 		cards,
 		playOption.setSize,
@@ -73,29 +93,128 @@ export function MatchTheSet() {
 	);
 
 	const [flippedState, setFlippedState] = useState(gameSets);
+	const [, setCurrentSet] = useState<CurrentSet[]>([]);
+	const [opensCount, setOpensCount] = useState(0);
+	const [isResultOpen, setIsResultOpen] = useState(false);
+
+	const openModal = useCallback(() => {
+		root.style.position = "fixed";
+		root.style.top = `-${window.scrollY}px`;
+		setFlippedState((prevFlippedState) => {
+			return prevFlippedState.map((set) => {
+				if (!set.isFlipped) {
+					return {
+						...set,
+						right: true,
+					};
+				}
+				return {
+					...set,
+					disabled: true,
+					isFlipped: false,
+					wrong: true,
+				};
+			});
+		});
+		setIsResultOpen(true);
+	}, []);
+
 	const gridScema = {
 		gridTemplate: `repeat(${playOption.fieldSize.rows}, 1fr) / repeat(${playOption.fieldSize.columns},  minmax(130px, 300px))`,
 	};
 	useEffect(() => {
 		setFlippedState(gameSets);
 	}, [playOption]);
-
-	function handleFlip(id: string): void {
-		setFlippedState((prevFlippedState) =>
-			prevFlippedState.map((set) => {
-				if (set.id === id) {
-					return { ...set, isFlipped: !set.isFlipped };
-				}
-				return set;
-			})
-		);
-	}
+	useEffect(() => {
+		if (opensCount === playOption.fieldSize.fieldSize && opensCount !== 0) {
+			dispatch(
+				gameStatusSlice.actions.changeStatus({
+					gameState: "won",
+					progress: {
+						opened: opensCount,
+						all: playOption.fieldSize.fieldSize,
+					},
+				})
+			);
+		}
+	}, [opensCount]);
+	useEffect(() => {
+		switch (gameStatus.gameState) {
+			case "fieldIsSetUp":
+				setFlippedState((prevFlippedState) =>
+					prevFlippedState.map((set) => ({ ...set, disabled: true }))
+				);
+				break;
+			case "started":
+				setFlippedState((prevFlippedState) =>
+					prevFlippedState.map((set) => ({
+						...set,
+						disabled: false,
+						isFlipped: true,
+					}))
+				);
+				setOpensCount(0);
+				setCurrentSet([]);
+				break;
+			case "won":
+				openModal();
+				break;
+			case "cancelled":
+				openModal();
+				break;
+			case "timerFailed":
+				openModal();
+				break;
+			case "cancelledHelper":
+				dispatch(
+					gameStatusSlice.actions.changeStatus({
+						gameState: "cancelled",
+						progress: {
+							opened: opensCount,
+							all: playOption.fieldSize.fieldSize,
+						},
+					})
+				);
+				break;
+			case "timerFailedHelper":
+				dispatch(
+					gameStatusSlice.actions.changeStatus({
+						gameState: "timerFailed",
+						progress: {
+							opened: opensCount,
+							all: playOption.fieldSize.fieldSize,
+						},
+					})
+				);
+				break;
+			default:
+		}
+	}, [gameStatus.gameState]);
 
 	return (
-		<div className={styles["match-the-set"]} style={gridScema}>
-			{flippedState.map((card) => {
-				return <GameCard key={card.id} card={card} handleFlip={handleFlip} />;
-			})}
-		</div>
+		<>
+			{resultModal &&
+				createPortal(
+					<ResultInfo {...{ isResultOpen, setIsResultOpen, gameStatus }} />,
+					resultModal
+				)}
+			<div className={s["match-the-set"]} style={gridScema}>
+				{flippedState.map((card) => {
+					return (
+						<GameCard
+							key={card.id}
+							{...{
+								card,
+								setFlippedState,
+								setCurrentSet,
+								playOption,
+								setOpensCount,
+								opensCount,
+							}}
+						/>
+					);
+				})}
+			</div>
+		</>
 	);
 }

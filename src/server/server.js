@@ -42,6 +42,8 @@ serv.get("/api/match-the-set/", async (req, res) => {
 				imageURL: `${servURL}images/match-the-set/${file}`,
 				isFlipped: false,
 				disabled: true,
+				wrong: false,
+				right: false,
 			};
 		});
 

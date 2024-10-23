@@ -60,7 +60,7 @@ export const optionMTSSlice = createSlice({
 	reducers: {
 		getOptions: (state, action: PayloadAction<PlayOption>) => {
 			state.setSize = action.payload.setSize;
-			state.fieldSize = action.payload.fieldSize;
+			state.fieldSize = { ...action.payload.fieldSize };
 		},
 	},
 });

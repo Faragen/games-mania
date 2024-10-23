@@ -22,8 +22,8 @@
 }
 .menu {
 	& *:not(:first-child) {
-		text-decoration: line-through;
 		pointer-events: none;
+		opacity: 0.5;
 	}
 	ul {
 		display: flex;
@@ -34,8 +34,10 @@
 		font-family: "Open Sans";
 		font-weight: 600;
 		font-style: normal;
+		font-size: clamp(16px, 0.9vw, 20px);
 		color: #d2d0da;
 		transition: all 0.6s ease;
+
 		&:hover {
 			color: #4361ee;
 		}

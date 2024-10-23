@@ -1,12 +1,12 @@
-import styles from "./Header.module.scss";
+import s from "./Header.module.scss";
 
 export function Header() {
 	return (
-		<header className={styles.hearder}>
-			<div className={styles.logo}>
+		<header className={s.hearder}>
+			<div className={s.logo}>
 				<a href='#'>LoGo</a>
 			</div>
-			<nav className={styles.menu}>
+			<nav className={s.menu}>
 				<ul>
 					<li>
 						<a href='#'>Match The Set</a>
@@ -22,9 +22,9 @@ export function Header() {
 					</li>
 				</ul>
 			</nav>
-			<div className={styles.auth}>
-				<button className={styles["sign-up"]}>Sign up</button>
-				<button className={styles["sign-in"]}>Sign in</button>
+			<div className={s.auth}>
+				<button className={s["sign-up"]}>Sign up</button>
+				<button className={s["sign-in"]}>Sign in</button>
 			</div>
 		</header>
 	);

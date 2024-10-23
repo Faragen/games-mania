@@ -1,25 +1,26 @@
+import { memo } from "react";
 import { optionsMTS } from "../../../../../../modules/MatchTheSet/options/options.slice";
-import styles from "../ToolsMTS.module.scss";
+import s from "../ToolsMTS.module.scss";
 import { v4 as uuidv4 } from "uuid";
 
-interface SetSizeProps {
-	setSize: string;
-	setSetSize: React.Dispatch<React.SetStateAction<string>>;
+interface ISetSizeProps {
+	setSizeIndex: string;
+	setSetSizeIndex: React.Dispatch<React.SetStateAction<string>>;
 	optionsMTS: typeof optionsMTS;
 }
 
-export function SetSize({ setSize, setSetSize, optionsMTS }: SetSizeProps) {
+function SetSize({ setSizeIndex, setSetSizeIndex, optionsMTS }: ISetSizeProps) {
 	return (
 		<>
-			<label htmlFor='set-size' className={styles["select-title"]}>
+			<label htmlFor='set-size' className={s["select-title"]}>
 				Set Size
 			</label>
-			<div className={styles["select-wrapper"]}>
+			<div className={s["select-wrapper"]}>
 				<select
-					className={styles.select}
+					className={s.select}
 					name='set-size'
-					value={setSize}
-					onChange={(e) => setSetSize(e.target.value)}
+					value={setSizeIndex}
+					onChange={(e) => setSetSizeIndex(e.target.value)}
 					id='set-size'
 				>
 					{optionsMTS.reduce(
@@ -42,3 +43,5 @@ export function SetSize({ setSize, setSetSize, optionsMTS }: SetSizeProps) {
 		</>
 	);
 }
+
+export default memo(SetSize);
