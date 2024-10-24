@@ -57,7 +57,7 @@ npm run install:all
 npm start
 ```
 
-6. You can view the project at
+6. You can view the project at:
 
 ```txt
 http://localhost:5173/

@@ -98,8 +98,8 @@ export function MatchTheSet() {
 	const [isResultOpen, setIsResultOpen] = useState(false);
 
 	const openModal = useCallback(() => {
-		root.style.position = "fixed";
 		root.style.top = `-${window.scrollY}px`;
+		root.style.position = "fixed";
 		setFlippedState((prevFlippedState) => {
 			return prevFlippedState.map((set) => {
 				if (!set.isFlipped) {

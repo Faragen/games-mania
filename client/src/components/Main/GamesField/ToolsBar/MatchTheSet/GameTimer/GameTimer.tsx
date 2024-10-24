@@ -23,8 +23,9 @@ export function GameTimer({ timer, isRunning, setTimer }: IGameTimerProps) {
 	const formattedSeconds = String(seconds).padStart(2, "0");
 
 	return (
-		<div
-			className={s.timer}
-		>{`${formattedMinutes}:${formattedSeconds} (3 min limit)`}</div>
+		<>
+			<div className={s.timer}>{`${formattedMinutes}:${formattedSeconds}`}</div>
+			<div className={s["timer-note"]}>(3 min limit)</div>
+		</>
 	);
 }
