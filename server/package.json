@@ -9,7 +9,6 @@
 		"serv": "nodemon server.js"
 	},
 	"author": "Faragen",
-	"license": "ISC",
 	"description": "",
 	"dependencies": {
 		"express": "^4.21.1",

@@ -24,6 +24,11 @@ serv.use(express.json());
 //forms-requests (Content-Type: application/x-www-form-urlencoded)
 serv.use(express.urlencoded({ extended: true }));
 
+//check for wait-on
+serv.get("/status", (req, res) => {
+	res.status(200).send("Server is running!");
+});
+
 //=========================================================
 //Get match the set
 //=========================================================

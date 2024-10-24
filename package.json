@@ -5,22 +5,25 @@
 	"type": "module",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"install:all": "npm install && npm run install:client && npm run install:server",
+		"install:client": "cd client && npm install",
+		"install:server": "cd server && npm install",
 		"server": "npm run serv --prefix server",
 		"client": "npm run dev --prefix client",
-		"start": "concurrently \"npm run server\" \"npm run client\""
+		"start": "concurrently \"npm run server\" \"wait-on http://localhost:3000/status && npm run client\""
 	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/Faragen/games-mania.git"
 	},
 	"author": "Faragen",
-	"license": "ISC",
 	"bugs": {
 		"url": "https://github.com/Faragen/games-mania/issues"
 	},
 	"homepage": "https://github.com/Faragen/games-mania#readme",
 	"description": "",
 	"devDependencies": {
-		"concurrently": "^9.0.1"
+		"concurrently": "^9.0.1",
+		"wait-on": "^8.0.1"
 	}
 }
