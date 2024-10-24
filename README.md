@@ -18,14 +18,14 @@ Currently, the game "Match the Set" (a memory matching game) is implemented.
 
 Based on the Vite template.
 
-##### Client
+#### Client
 
 - HTML5
 - CSS3 (SCSS)
 - TypeScript
 - React, React Router, Redux Toolkit
 
-##### Server
+#### Server
 
 - JavaScript
 - Node.js, Express
@@ -57,7 +57,11 @@ npm run install:all
 npm start
 ```
 
-6. You can view the project at http://localhost:5173/
+6. You can view the project at
+
+```txt
+http://localhost:5173/
+```
 
 ## Author
 

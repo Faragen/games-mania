@@ -18,14 +18,14 @@ Games Mania - сборник игр.
 
 За основу взят шаблон Vite.
 
-##### Клиент
+#### Клиент
 
 - HTML5
 - CSS3 (SCSS)
 - TypeScript
 - React, React Router, Redux Toolkit
 
-##### Cервер
+#### Cервер
 
 - JavaScript
 - Node.js, Express
@@ -57,7 +57,11 @@ npm run install:all
 npm start
 ```
 
-6. Посмотреть работу проекта можно по ссылке http://localhost:5173/.
+6. Посмотреть работу проекта можно по ссылке:
+
+```txt
+http://localhost:5173/
+```
 
 ## Автор
 
