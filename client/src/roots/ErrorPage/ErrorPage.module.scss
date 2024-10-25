@@ -1,0 +1,26 @@
+.error {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	min-width: 100vw;
+	padding: 15px;
+	font-family: "Open Sans";
+	font-weight: 600;
+	font-style: normal;
+	color: #b5b4ba;
+	& > * {
+		margin-bottom: 30px;
+	}
+	h1 {
+		font-size: clamp(30px, 3vw, 40px);
+	}
+	h2 {
+		font-size: clamp(20px, 2.5vw, 30px);
+	}
+	p {
+		font-size: clamp(14px, 0.8vw, 20px);
+	}
+}
