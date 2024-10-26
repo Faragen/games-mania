@@ -1,4 +1,4 @@
-import { GameStatus } from "../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
+import { GameStatus } from "../../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
 import s from "./ResultInfo.module.scss";
 
 interface IResultInfoProps {

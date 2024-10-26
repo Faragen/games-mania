@@ -1,5 +1,5 @@
 import s from "./ToolsBar.module.scss";
-import { ToolsMTS } from "./MatchTheSet/ToolsMTS";
+import { ToolsMTS } from "./ToolsMTS/ToolsMTS";
 
 export function ToolsBar() {
 	return (

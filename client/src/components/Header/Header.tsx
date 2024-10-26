@@ -4,12 +4,12 @@ export function Header() {
 	return (
 		<header className={s.hearder}>
 			<div className={s.logo}>
-				<a href='#'>LoGo</a>
+				<a href='/'>LoGo</a>
 			</div>
 			<nav className={s.menu}>
 				<ul>
 					<li>
-						<a href='#'>Match The Set</a>
+						<a href='match-the-set'>Match The Set</a>
 					</li>
 					<li>
 						<a href='#'>Game2</a>

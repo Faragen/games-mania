@@ -1,10 +1,10 @@
 import { memo } from "react";
-import { gameStatusSlice } from "../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
+import { gameStatusSlice } from "../../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
 import {
 	optionMTSSlice,
 	PlayOption,
-} from "../../../../../../modules/MatchTheSet/options/options.slice";
-import { useAppDispatch } from "../../../../../../store/store";
+} from "../../../../../../../modules/MatchTheSet/options/options.slice";
+import { useAppDispatch } from "../../../../../../../store/store";
 import s from "../ToolsMTS.module.scss";
 
 interface INewFieldButtonProps {

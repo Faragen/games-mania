@@ -1,23 +1,7 @@
 import { combineSlices, configureStore } from "@reduxjs/toolkit";
-import { getMatchTheSet } from "./fetchRequests/getGames";
 import { useDispatch, useSelector } from "react-redux";
 import { optionMTSSlice } from "../modules/MatchTheSet/options/options.slice";
 import { gameStatusSlice } from "../modules/MatchTheSet/gameStatus/gameStatus.slice";
-
-export const url = "http://localhost:3000";
-
-//Match The Set
-export type Card = {
-	id: string;
-	title: string;
-	imageURL: string;
-	isFlipped: boolean;
-	disabled: boolean;
-	wrong: boolean;
-	right: boolean;
-};
-
-export const cards = await getMatchTheSet(url);
 
 //Slices
 const rootReducer = combineSlices({

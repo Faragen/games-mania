@@ -1,6 +1,6 @@
 import { memo } from "react";
-import { gameStatusSlice } from "../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
-import { useAppDispatch } from "../../../../../../store/store";
+import { gameStatusSlice } from "../../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
+import { useAppDispatch } from "../../../../../../../store/store";
 import s from "../ToolsMTS.module.scss";
 
 interface ICancelButton {

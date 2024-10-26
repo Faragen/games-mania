@@ -1,7 +1,7 @@
 import { memo } from "react";
-import { gameStatusSlice } from "../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
-import { PlayOption } from "../../../../../../modules/MatchTheSet/options/options.slice";
-import { useAppDispatch } from "../../../../../../store/store";
+import { gameStatusSlice } from "../../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
+import { PlayOption } from "../../../../../../../modules/MatchTheSet/options/options.slice";
+import { useAppDispatch } from "../../../../../../../store/store";
 import s from "../ToolsMTS.module.scss";
 
 interface IStartButtonProps {

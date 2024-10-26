@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import {
 	optionsMTS,
 	PlayOption,
-} from "../../../../../modules/MatchTheSet/options/options.slice";
+} from "../../../../../../modules/MatchTheSet/options/options.slice";
 import s from "./ToolsMTS.module.scss";
 import SetSize from "./SetSize/SetSize";
 import FieldSize from "./FieldSize/FieldSize";
@@ -10,8 +10,8 @@ import StartButton from "./StartButton/StartButton";
 import NewFieldButton from "./NewFieldButton/NewFieldButton";
 import CancelButton from "./CancelButton/CancelButton";
 import { GameTimer } from "./GameTimer/GameTimer";
-import { useAppDispatch, useAppSelector } from "../../../../../store/store";
-import { gameStatusSlice } from "../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
+import { useAppDispatch, useAppSelector } from "../../../../../../store/store";
+import { gameStatusSlice } from "../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
 
 export function ToolsMTS() {
 	const dispatch = useAppDispatch();

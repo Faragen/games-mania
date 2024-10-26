@@ -6,9 +6,20 @@ import Root from "./roots/Root/Root";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { ErrorPage } from "./roots/ErrorPage/ErrorPage";
+import { MatchTheSet } from "./components/Main/GamesField/MatchTheSet/MatchTheSet";
 
 const router = createBrowserRouter([
-	{ path: "/", element: <Root />, errorElement: <ErrorPage /> },
+	{
+		path: "/",
+		element: <Root />,
+		errorElement: <ErrorPage />,
+		children: [
+			{
+				path: "match-the-set",
+				element: <MatchTheSet />,
+			},
+		],
+	},
 ]);
 
 createRoot(document.getElementById("root")!).render(

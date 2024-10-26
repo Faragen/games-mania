@@ -1,8 +1,8 @@
 import s from "./GameCard.module.scss";
 import React, { memo } from "react";
-import { Card } from "../../../../../../store/store";
-import { CurrentSet } from "../MatchTheSet";
-import { PlayOption } from "../../../../../../modules/MatchTheSet/options/options.slice";
+import { Card } from "../../../../../../../store/fetchRequests/getGames";
+import { CurrentSet } from "../BoardMTS";
+import { PlayOption } from "../../../../../../../modules/MatchTheSet/options/options.slice";
 
 interface IGameCard {
 	card: Card;

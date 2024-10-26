@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { optionsMTS } from "../../../../../../modules/MatchTheSet/options/options.slice";
+import { optionsMTS } from "../../../../../../../modules/MatchTheSet/options/options.slice";
 import s from "../ToolsMTS.module.scss";
 import { v4 as uuidv4 } from "uuid";
 

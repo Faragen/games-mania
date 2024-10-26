@@ -1,10 +1,10 @@
 import s from "./GameBoard.module.scss";
-import { MatchTheSet } from "./MatchTheSet/MatchTheSet";
+import { BoardMTS } from "./BoardMTS/BoardMTS";
 
 export function GameBoard() {
 	return (
 		<div className={s["game-board"]}>
-			<MatchTheSet />
+			<BoardMTS />
 		</div>
 	);
 }

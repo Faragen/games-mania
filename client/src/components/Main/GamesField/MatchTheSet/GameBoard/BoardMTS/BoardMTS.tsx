@@ -1,16 +1,13 @@
-import s from "./MatchTheSet.module.scss";
-import {
-	cards,
-	useAppDispatch,
-	useAppSelector,
-} from "../../../../../store/store";
-import { Card } from "../../../../../store/store";
+import s from "./BoardMTS.module.scss";
+import { useAppDispatch, useAppSelector } from "../../../../../../store/store";
+import { Card } from "../../../../../../store/fetchRequests/getGames";
 import GameCard from "./GameCard/GameCard";
 import { useCallback, useEffect, useState } from "react";
-import { optionMTSSlice } from "../../../../../modules/MatchTheSet/options/options.slice";
-import { gameStatusSlice } from "../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
+import { optionMTSSlice } from "../../../../../../modules/MatchTheSet/options/options.slice";
+import { gameStatusSlice } from "../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
 import { createPortal } from "react-dom";
 import { ResultInfo } from "./ResultInfo/ResultInfo";
+import { cards } from "./helpers";
 
 export type CurrentSet = {
 	id: string;
@@ -77,7 +74,7 @@ function sortTheSets(
 const resultModal = document.getElementById("result-modal");
 const root = document.getElementById("root")!;
 
-export function MatchTheSet() {
+export function BoardMTS() {
 	const dispatch = useAppDispatch();
 	const playOption = useAppSelector((state) =>
 		optionMTSSlice.selectors.selectPlayOption(state)
