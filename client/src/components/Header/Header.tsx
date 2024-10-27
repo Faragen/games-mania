@@ -1,24 +1,25 @@
+import { Link } from "react-router-dom";
 import s from "./Header.module.scss";
 
 export function Header() {
 	return (
 		<header className={s.hearder}>
 			<div className={s.logo}>
-				<a href='/'>LoGo</a>
+				<Link to='/'>LoGo</Link>
 			</div>
 			<nav className={s.menu}>
 				<ul>
 					<li>
-						<a href='match-the-set'>Match The Set</a>
+						<Link to='match-the-set'>Match The Set</Link>
 					</li>
 					<li>
-						<a href='#'>Game2</a>
+						<Link to='#'>Game2</Link>
 					</li>
 					<li>
-						<a href='#'>Game3</a>
+						<Link to='#'>Game3</Link>
 					</li>
 					<li>
-						<a href='#'>Game4</a>
+						<Link to='#'>Game4</Link>
 					</li>
 				</ul>
 			</nav>

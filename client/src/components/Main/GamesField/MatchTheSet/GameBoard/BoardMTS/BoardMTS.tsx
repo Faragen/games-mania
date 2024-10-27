@@ -7,7 +7,8 @@ import { optionMTSSlice } from "../../../../../../modules/MatchTheSet/options/op
 import { gameStatusSlice } from "../../../../../../modules/MatchTheSet/gameStatus/gameStatus.slice";
 import { createPortal } from "react-dom";
 import { ResultInfo } from "./ResultInfo/ResultInfo";
-import { cards } from "./helpers";
+import { useLoaderData } from "react-router-dom";
+// import { cards } from "./cardsLoaderMTS";
 
 export type CurrentSet = {
 	id: string;
@@ -76,6 +77,7 @@ const root = document.getElementById("root")!;
 
 export function BoardMTS() {
 	const dispatch = useAppDispatch();
+	const cards = useLoaderData() as Card[];
 	const playOption = useAppSelector((state) =>
 		optionMTSSlice.selectors.selectPlayOption(state)
 	);

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import s from "./Footer.module.scss";
 
 const date = new Date();
@@ -8,16 +9,16 @@ export function Footer() {
 		<footer className={s.footer}>
 			<div className={s.company}>
 				<span>
-					© {currentYear} <a href='#'>Company name</a>
+					© {currentYear} <Link to='#'>Company name</Link>
 				</span>
 				<span> All rights Reserved</span>
 			</div>
 			<div className={s.logo}>
-				<a href='#'>LoGo</a>
+				<Link to='/'>LoGo</Link>
 			</div>
 			<div className={s.information}>
-				<a href='#'>Privecy Policy</a>
-				<a href='#'>Terms & Condition</a>
+				<Link to='#'>Privecy Policy</Link>
+				<Link to='#'>Terms & Condition</Link>
 			</div>
 		</footer>
 	);
