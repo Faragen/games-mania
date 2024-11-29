@@ -1,7 +1,10 @@
 import { Link } from "react-router-dom";
 import s from "./Header.module.scss";
+import { SignInButton } from "./SignIn/SignInButton";
+import { useAuth } from "../../hooks/useAuth";
 
 export function Header() {
+	const { user } = useAuth();
 	return (
 		<header className={s.hearder}>
 			<div className={s.logo}>
@@ -24,8 +27,14 @@ export function Header() {
 				</ul>
 			</nav>
 			<div className={s.auth}>
-				<button className={s["sign-up"]}>Sign up</button>
-				<button className={s["sign-in"]}>Sign in</button>
+				{user ? (
+					<div>Profile</div>
+				) : (
+					<>
+						<button className={s["sign-up"]}>Sign up</button>
+						<SignInButton />
+					</>
+				)}
 			</div>
 		</header>
 	);

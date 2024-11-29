@@ -8,6 +8,7 @@ import { store } from "./store/store";
 import { ErrorPage } from "./roots/ErrorPage/ErrorPage";
 import { MatchTheSet } from "./components/Main/GamesField/MatchTheSet/MatchTheSet";
 import { cardsLoaderMTS } from "./components/Main/GamesField/MatchTheSet/GameBoard/BoardMTS/cardsLoaderMTS";
+import { AuthProvider } from "./contextProviders/AuthProvider";
 
 const router = createBrowserRouter([
 	{
@@ -26,8 +27,10 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")!).render(
 	<StrictMode>
-		<Provider store={store}>
-			<RouterProvider router={router} />
-		</Provider>
+		<AuthProvider>
+			<Provider store={store}>
+				<RouterProvider router={router} />
+			</Provider>
+		</AuthProvider>
 	</StrictMode>
 );

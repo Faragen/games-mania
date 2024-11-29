@@ -1,9 +1,9 @@
 import { getMatchTheSet } from "../../../../../../store/fetchRequests/getGames";
 
-const url = "http://localhost:3000";
+export const URL = "http://localhost:3000";
 
 export async function cardsLoaderMTS() {
-	const cards = await getMatchTheSet(url);
+	const cards = await getMatchTheSet(URL);
 
 	return cards;
 }
