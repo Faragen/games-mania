@@ -32,6 +32,7 @@
 :active {
 	outline: none;
 }
+
 a:focus,
 a:active {
 	outline: none;
@@ -45,9 +46,14 @@ aside {
 }
 
 input,
+select,
 button,
 textarea {
+	position: relative;
+	z-index: 0;
 	font-family: inherit;
+	font-size: inherit;
+	color: inherit;
 }
 
 input::-ms-clear {
@@ -63,6 +69,7 @@ button::-moz-focus-inner {
 a,
 a:visited {
 	text-decoration: none;
+	color: inherit;
 }
 a:hover {
 	text-decoration: none;

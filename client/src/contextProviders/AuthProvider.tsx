@@ -2,6 +2,9 @@ import { createContext, PropsWithChildren, useState } from "react";
 
 type UserAuth = {
 	username: string;
+	userId: string;
+	userAvatar: string;
+	email: string;
 } | null;
 
 export const AuthContext = createContext<{

@@ -99,6 +99,7 @@ export function BoardMTS() {
 	const openModal = useCallback(() => {
 		root.style.top = `-${window.scrollY}px`;
 		root.style.position = "fixed";
+		root.style.overflow = "scroll";
 		setFlippedState((prevFlippedState) => {
 			return prevFlippedState.map((set) => {
 				if (!set.isFlipped) {

@@ -1,7 +1,12 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink, NavLinkRenderProps } from "react-router-dom";
 import s from "./Header.module.scss";
 import { SignInButton } from "./SignIn/SignInButton";
 import { useAuth } from "../../hooks/useAuth";
+import { ProfileMenuBtn } from "./ProfileMenuBtn/ProfileMenuBtn";
+import { SignUpButton } from "./SignUp/SignUpButton";
+
+const setActive = ({ isActive }: NavLinkRenderProps) =>
+	isActive ? s.active : "";
 
 export function Header() {
 	const { user } = useAuth();
@@ -13,25 +18,33 @@ export function Header() {
 			<nav className={s.menu}>
 				<ul>
 					<li>
-						<Link to='match-the-set'>Match The Set</Link>
+						<NavLink to='match-the-set' className={setActive}>
+							Match The Set
+						</NavLink>
 					</li>
 					<li>
-						<Link to='#'>Game2</Link>
+						<NavLink to='placeholder#' className={setActive}>
+							Game2
+						</NavLink>
 					</li>
 					<li>
-						<Link to='#'>Game3</Link>
+						<NavLink to='placeholder#' className={setActive}>
+							Game3
+						</NavLink>
 					</li>
 					<li>
-						<Link to='#'>Game4</Link>
+						<NavLink to='placeholder#' className={setActive}>
+							Game4
+						</NavLink>
 					</li>
 				</ul>
 			</nav>
 			<div className={s.auth}>
 				{user ? (
-					<div>Profile</div>
+					<ProfileMenuBtn />
 				) : (
 					<>
-						<button className={s["sign-up"]}>Sign up</button>
+						<SignUpButton />
 						<SignInButton />
 					</>
 				)}

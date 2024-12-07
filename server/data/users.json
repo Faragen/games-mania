@@ -1,0 +1,17 @@
+{
+	"count": 2,
+	"admin": {
+		"email": "fakeadmin@mmail.com",
+		"username": "admin",
+		"password": "admin11@",
+		"userId": 1,
+		"userAvatar": "http://localhost:3000/images/users-avatars/1.webp"
+	},
+	"AbraKadabra": {
+		"email": "qwrqwe@gmail.com",
+		"username": "AbraKadabra",
+		"password": "dfs78j8dsf&",
+		"userId": 2,
+		"userAvatar": "http://localhost:3000/images/users-avatars/0.webp"
+	}
+}

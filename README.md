@@ -23,7 +23,7 @@ Based on the Vite template.
 - HTML5
 - CSS3 (SCSS)
 - TypeScript
-- React, React Router, Redux Toolkit
+- React, React Router, Redux Toolkit, React Hook Form
 
 #### Server
 

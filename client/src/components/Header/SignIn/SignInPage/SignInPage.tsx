@@ -2,42 +2,59 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useAuth } from "../../../../hooks/useAuth";
 import s from "./SignInPage.module.scss";
 import { URL } from "../../../Main/GamesField/MatchTheSet/GameBoard/BoardMTS/cardsLoaderMTS";
-import { useState } from "react";
+import { useCallback, useState } from "react";
+import { useAuthModal } from "../../../../hooks/useAuthModal";
 
 interface ISignInForm {
-	username: "string";
-	password: "string";
+	username: string;
+	password: string;
 }
 
-export function SignInPage<T = React.Dispatch<React.SetStateAction<boolean>>>({
-	openModal,
-	setOpenModal,
-	handleOpenSignIn,
-}: {
-	openModal: boolean;
-	setOpenModal: T;
-	handleOpenSignIn: (setOpenModal: T) => void;
-}) {
+export function SignInPage() {
 	const [serverError, setServerError] = useState<string | null>(null);
 	const { register, handleSubmit, formState } = useForm<ISignInForm>({
 		mode: "onSubmit",
 	});
 	const { setUser } = useAuth();
-	const onSubmit: SubmitHandler<ISignInForm> = async (data: any) => {
+	const { openModal, setOpenModal, handleCloseSignIn } = useAuthModal();
+
+	const onSubmit: SubmitHandler<ISignInForm> = useCallback(async (data) => {
 		const res = await fetch(URL + "/api/login", {
 			method: "POST",
+			credentials: "include",
 			body: JSON.stringify(data),
 			headers: {
 				"Content-Type": "application/json",
 			},
 		});
 		if (res.ok) {
+			console.log(await res.text());
+
 			setServerError(null);
-			return setUser({ username: data.username && null });
+			const profile = await fetch(URL + "/api/profile", {
+				method: "POST",
+				credentials: "include",
+				body: JSON.stringify({ username: data.username }),
+				headers: {
+					"Content-Type": "application/json",
+				},
+			});
+			if (profile.ok) {
+				const { username, userId, userAvatar, email } = await profile.json();
+				setUser({
+					username,
+					userId,
+					userAvatar,
+					email,
+				});
+				return handleCloseSignIn(setOpenModal);
+			}
+			setUser(null);
+			return setServerError(await profile.text());
 		}
 		setUser(null);
 		setServerError(await res.text());
-	};
+	}, []);
 
 	const usernameError = formState.errors.username?.message;
 	const passwordError = formState.errors.password?.message;
@@ -67,7 +84,7 @@ export function SignInPage<T = React.Dispatch<React.SetStateAction<boolean>>>({
 				<button
 					type='button'
 					className={s["close-window"]}
-					onClick={() => handleOpenSignIn(setOpenModal)}
+					onClick={() => handleCloseSignIn(setOpenModal)}
 				>
 					X
 				</button>

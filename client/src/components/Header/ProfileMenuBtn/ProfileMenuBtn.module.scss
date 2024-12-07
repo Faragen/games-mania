@@ -1,0 +1,88 @@
+.profile {
+	position: relative;
+	padding: 10px;
+	&:hover {
+		.sub-menu {
+			transition: max-height 2s;
+			max-height: 1000px;
+		}
+	}
+	.profile-icon {
+		img {
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			overflow: hidden;
+			border: 5px solid #4361ee;
+			&:hover {
+				border: 5px solid #d2d0da;
+				box-shadow: var(--box-shadow-main);
+			}
+		}
+	}
+
+	.sub-menu {
+		overflow: hidden;
+		max-height: 0;
+		position: absolute;
+		top: 100px;
+		right: 0;
+		.container {
+			overflow: hidden;
+			display: flex;
+			flex-direction: column;
+			width: auto;
+			background-color: #212d49;
+			border: 2px solid #4361ee;
+			padding: clamp(16px, 1vw, 26px);
+
+			.avatar {
+				display: flex;
+				flex-direction: row;
+				justify-content: center;
+				align-items: center;
+				column-gap: 10px;
+				margin-bottom: 10px;
+				img {
+					border-radius: 50%;
+					width: 100px;
+					height: 100px;
+				}
+				p {
+					font-size: 24px;
+				}
+			}
+			hr {
+				height: 2px;
+				background-color: #0a111f;
+				border: none;
+				margin-bottom: 10px;
+			}
+			ul {
+				display: flex;
+				flex-direction: column;
+				row-gap: 10px;
+				.sub-menu-option {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					width: 100%;
+					padding: 2px 20px;
+					font-size: 20px;
+					transition: transform 0.5s, color 0.5s;
+					&:hover {
+						span {
+							transition: transform 0.5s, color 0.5s;
+							transform: translateX(5px);
+							color: #4361ee;
+						}
+						p {
+							transition: color 0.5s;
+							color: #4361ee;
+						}
+					}
+				}
+			}
+		}
+	}
+}

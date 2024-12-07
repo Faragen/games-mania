@@ -14,6 +14,7 @@ function handleCloseModal({
 }: {
 	setIsResultOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+	root.style.overflow = "hidden";
 	root.style.position = "";
 	window.scrollTo(0, -parseInt(getComputedStyle(root).top));
 	root.style.top = "";
