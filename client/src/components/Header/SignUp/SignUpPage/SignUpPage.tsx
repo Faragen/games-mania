@@ -1,7 +1,7 @@
 import { type SubmitHandler, useForm } from "react-hook-form";
 import s from "./SignUpPage.module.scss";
 import { URL } from "../../../Main/GamesField/MatchTheSet/GameBoard/BoardMTS/cardsLoaderMTS";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useRegistModal } from "../../../../hooks/useRegistModal";
 
 interface ISignInForm {
@@ -18,6 +18,8 @@ export function SignUpPage() {
 	});
 	const { openRegistModal, setRegistOpenModal, handleCloseSignUp } =
 		useRegistModal();
+
+	const backdropRef = useRef<HTMLDialogElement | null>(null);
 
 	const onSubmit: SubmitHandler<ISignInForm> = useCallback(async (data) => {
 		const registData = {
@@ -46,7 +48,15 @@ export function SignUpPage() {
 	const confirmPasswordsError = formState.errors.passwordConfirm?.message;
 
 	return (
-		<dialog open={openRegistModal} className={s["backdrop"]}>
+		<dialog
+			open={openRegistModal}
+			className={s["backdrop"]}
+			ref={backdropRef}
+			onClick={(e) =>
+				e.target === backdropRef.current &&
+				handleCloseSignUp(setRegistOpenModal)
+			}
+		>
 			<form className={s["signin-window"]} onSubmit={handleSubmit(onSubmit)}>
 				<h3 className={s.title}>Sign Up</h3>
 				{serverError && <p className={s.error}>{serverError}</p>}

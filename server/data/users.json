@@ -3,7 +3,7 @@
 	"admin": {
 		"email": "fakeadmin@mmail.com",
 		"username": "admin",
-		"password": "admin11@",
+		"password": "admin",
 		"userId": 1,
 		"userAvatar": "http://localhost:3000/images/users-avatars/1.webp"
 	},

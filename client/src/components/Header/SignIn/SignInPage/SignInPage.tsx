@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useAuth } from "../../../../hooks/useAuth";
 import s from "./SignInPage.module.scss";
 import { URL } from "../../../Main/GamesField/MatchTheSet/GameBoard/BoardMTS/cardsLoaderMTS";
-import { useCallback, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import { useAuthModal } from "../../../../hooks/useAuthModal";
 
 interface ISignInForm {
@@ -15,6 +15,7 @@ export function SignInPage() {
 	const { register, handleSubmit, formState } = useForm<ISignInForm>({
 		mode: "onSubmit",
 	});
+	const backdropRef = useRef<HTMLDialogElement | null>(null);
 	const { setUser } = useAuth();
 	const { openModal, setOpenModal, handleCloseSignIn } = useAuthModal();
 
@@ -60,7 +61,14 @@ export function SignInPage() {
 	const passwordError = formState.errors.password?.message;
 
 	return (
-		<dialog open={openModal} className={s["backdrop"]}>
+		<dialog
+			open={openModal}
+			className={s["backdrop"]}
+			ref={backdropRef}
+			onClick={(e) => {
+				e.target === backdropRef.current && handleCloseSignIn(setOpenModal);
+			}}
+		>
 			<form className={s["signin-window"]} onSubmit={handleSubmit(onSubmit)}>
 				<h3 className={s.title}>Sign In</h3>
 				{serverError && <p className={s.error}>{serverError}</p>}
